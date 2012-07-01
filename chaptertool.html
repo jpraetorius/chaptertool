@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chaptertool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontello.css">
+    <!--[if IE 7]><link rel="stylesheet" href="css/fontello-ie7.css"><![endif]-->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Chaptertool | providing chaptermark files since 2012</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1 class="page-header">Welcome to chaptertool</h1>
+      <p class="lead">Use this page to easily generate a chaptermark file for your podcast.<br />
+        Simply press the button below to start a new session.</p>
+      
+      <div id="control-buttons">
+          <button id="start" class="btn btn-success btn-large">Press me to start a new Session</button>
+          <button id="stop" class="btn btn-danger btn-large hide">Stop Session</button>
+      </div>
+      <div id="dl-buttons" class="hide">
+          <button id="text" class="btn btn-info btn-large"><i class="icon-download"></i>Download as plain Text</button>
+          <button id="xml" class="btn btn-info btn-large"><i class="icon-download"></i>Download as XML</button>
+          <button id="reload" class="btn btn-success btn-large"><i class="icon-cw"></i>Start a new session</button>
+      </div>
+
+      <div id="timeline"> 
+        <div class="row">
+          <div class="span4 title">Timecode</div>
+          <div class="span5 title">Chapter Title</div>
+        </div>
+      </div>
+
+      <div id="help" class="help">
+        <h3>Next steps</h3>
+        <p>Now that you've successfully created your session there are some last steps:</p>
+        <ul>
+          <li>Enter a short description for each Chapter</li>
+          <li>Remove chapters you don't need</li>
+          <li>Download the file as plain Text (suitable for Auphonic)</li>
+          <li>Download the file as XML (adhering to the Podlove 'Simple Chapters' standard)</li>
+        </ul>
+        <p><em>Hint:</em>To start a new Session, simply reload the page.</p>
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/xdate.js"></script>
+    <script src="js/application.js"></script>
+  </body>
+</html>
