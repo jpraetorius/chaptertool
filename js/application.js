@@ -7,9 +7,9 @@ $(document).ready(function() {
       case "ready":
         startdate = new XDate();
         state = "running";
-        timeline_container.append('<h2>Tracking session started at ' + startdate.toString('dd.MM.yyyy HH:mm:ss') + '</h2>');
+        timeline_container.prepend('<h3>Tracking session started at ' + startdate.toString('dd.MM.yyyy HH:mm:ss') + '</h3>');
         timeline_container.append(addRow(formatDateDiff(startdate, startdate), 'Intro', startdate.getTime()));
-        $("#start").html("Add new Timestamp...");
+        $("#start").html("<i class='icon-bookmark-empty icon-large'> </i>Add new Timestamp...");
         $("#stop").removeClass('hide');
         break;
       case "running":
@@ -26,7 +26,7 @@ $(document).ready(function() {
     timeline_container.append(addRow(formatDateDiff(startdate, now), 'End', now.getTime()));
     state = "finished";
     startdate = null;
-    timeline_container.append('<h2>Tracking session stopped at ' + now.toString('dd.MM.yyyy HH:mm:ss') + '</h2>');
+    timeline_container.append('<h3>Tracking session stopped at ' + now.toString('dd.MM.yyyy HH:mm:ss') + '</h3>');
     $("#control-buttons").addClass('hide');
     $("#dl-buttons").removeClass('hide');
     $("#help").addClass('help-show');
@@ -45,7 +45,7 @@ $(document).ready(function() {
    });
 
    $(document).on("click", "a.delete", function(){
-    $(this).closest('div.row').remove(); 
+    var div = $(this).closest('div.row-fluid').remove();
     return false;
    });
 
@@ -72,15 +72,15 @@ function formatDateDiff(startdate, now) {
 
 function addRow(diff, text, id) {
 
-  var template = '<div class="row">' +
-    '<div class="span4">' +
-      '<input type="text" class="span4" placeholder="Timecode of the starttime" value="'+ diff +'" />' +
+  var template = '<div class="row-fluid">' +
+    '<div class="span3">' +
+      '<input type="text" class="input-block-level" placeholder="Timecode" value="'+ diff +'" />' +
     '</div>' + 
-    '<div class="span5">' +
-      '<input type="text" class="span5" placeholder="Please enter a description..." value="' + text + '" />' +
+    '<div class="span8">' +
+      '<input type="text" class="input-block-level" placeholder="Please enter a description..." value="' + text + '" />' +
     '</div>' + 
     '<div class="span1">' + 
-      '<a href="#" title="delete this entry" class="icon-cancel delete" id="'+ id +'" />' + 
+      '<a href="#" title="delete this entry" class="icon-remove icon-2x delete" id="'+ id +'"> </a>' + 
     '</div>' + 
   '</div>';
 
