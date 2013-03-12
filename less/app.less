@@ -1,0 +1,46 @@
+body {
+  margin-top: @navbarHeight; //allow static navbar
+}
+
+a.delete {
+  color: @red;
+  text-decoration: none;
+  &:hover {
+    color: @redDarker;  
+  } 
+}
+
+.title {
+  margin-bottom: 13px;
+  border-bottom: 1px solid @grayLighter;
+}
+
+#control-buttons,
+#dl-buttons {
+  margin-bottom: 26px;
+}
+
+.help {
+  padding: 26px;
+  opacity: 0;
+}
+
+.help-show {
+  background-color: @yellow;
+  opacity: 1;
+  box-shadow: 0 0 6px @grayLight;
+  .transition('opacity 1.2s ease-in-out');
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// Visibility
+.invisible {
+  visibility: hidden;
+}

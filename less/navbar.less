@@ -1,0 +1,106 @@
+//
+// Navbars (Redux)
+// --------------------------------------------------
+
+// COMMON STYLES
+// -------------
+
+// Base class and wrapper
+.navbar {
+  overflow: visible;
+  margin-bottom: @baseLineHeight;
+
+  // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
+  *position: relative;
+  *z-index: 2;
+}
+
+// Inner for background effects
+// Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
+.navbar-inner {
+  min-height: @navbarHeight;
+  padding-left:  20px;
+  padding-right: 20px;
+  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  border: 1px solid @navbarBorder;
+  .border-radius(@baseBorderRadius);
+  .box-shadow(0 1px 4px rgba(0,0,0,.065));
+
+  // Prevent floats from breaking the navbar
+  .clearfix();
+}
+
+// Set width to auto for default container
+// We then reset it for fixed navbars in the #gridSystem mixin
+.navbar .container {
+  width: auto;
+}
+
+// Override the default collapsed state
+.nav-collapse.collapse {
+  height: auto;
+  overflow: visible;
+}
+
+
+// Brand: website or project name
+// -------------------------
+.navbar .brand {
+  float: left;
+  display: block;
+  // Vertically center the text given @navbarHeight
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+  margin-left: -20px; // negative indent to left-align the text down the page
+  font-size: 20px;
+  font-weight: 200;
+  color: @navbarBrandColor;
+  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+// Fixed navbar
+// -------------------------
+
+// Shared (top/bottom) styles
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindexFixedNavbar;
+  margin-bottom: 0; // remove 18px margin for default navbar
+}
+.navbar-fixed-top .navbar-inner,
+.navbar-static-top .navbar-inner {
+  border-width: 0 0 1px;
+}
+.navbar-fixed-bottom .navbar-inner {
+  border-width: 1px 0 0;
+}
+.navbar-fixed-top .navbar-inner,
+.navbar-fixed-bottom .navbar-inner {
+  padding-left:  0;
+  padding-right: 0;
+  .border-radius(0);
+}
+
+// Reset container width
+// Required here as we reset the width earlier on and the grid mixins don't override early enough
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  #grid > .core > .span(@gridColumns);
+}
+
+// Fixed to top
+.navbar-fixed-top {
+  top: 0;
+}
+.navbar-fixed-top,
+.navbar-static-top {
+  .navbar-inner {
+    .box-shadow(~"0 1px 10px rgba(0,0,0,.1)");
+  }
+}
