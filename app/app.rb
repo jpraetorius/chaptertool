@@ -26,7 +26,7 @@ post '/as-text' do
 	end
 	sorted = entries.values.sort
 	content_type :text
-	erb :auphonic, :locals => {:entries => sorted}, :encoding => 'utf-8'
+	erb :auphonic, :locals => {:entries => sorted}
 end
 
 def get_entry(entries, id)
