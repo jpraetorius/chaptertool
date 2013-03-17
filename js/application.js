@@ -37,7 +37,7 @@ $(document).ready(function() {
    });
 
    $("#text").click(function() {
-    alert('Download as text');
+    //alert('Download as text');
    });
 
    $("#xml").click(function() {
@@ -74,10 +74,11 @@ function addRow(diff, text, id) {
 
   var template = '<div class="row-fluid">' +
     '<div class="span3">' +
-      '<input type="text" class="input-block-level" placeholder="Timecode" value="'+ diff +'" />' +
+      '<input type="text" class="input-block-level" placeholder="Timecode" name="timecode_'+ id +'" value="'+ diff +'" />' +
+      '<input type="hidden" name="timecode_absolute_'+ id +'" value="'+ id +'" />' +
     '</div>' + 
     '<div class="span8">' +
-      '<input type="text" class="input-block-level" placeholder="Please enter a description..." value="' + text + '" />' +
+      '<input type="text" class="input-block-level" placeholder="Please enter a description..." name="text_'+ id +'" value="' + text + '" />' +
     '</div>' + 
     '<div class="span1">' + 
       '<a href="#" title="delete this entry" class="icon-remove icon-2x delete" id="'+ id +'"> </a>' + 

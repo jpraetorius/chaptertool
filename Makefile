@@ -1,24 +1,31 @@
 DIST_DIR = ./dist
-DIST_CSS_DIR = $(DIST_DIR)/css
-DIST_IMG_DIR = $(DIST_DIR)/img
-DIST_JS_DIR = $(DIST_DIR)/js
-DIST_FONT_DIR = $(DIST_DIR)/font
+PUBLIC_DIR = $(DIST_DIR)/public
+DIST_VIEWS_DIR = $(DIST_DIR)/views
+DIST_LIB_DIR = $(DIST_DIR)/lib
+DIST_CSS_DIR = $(PUBLIC_DIR)/css
+DIST_IMG_DIR = $(PUBLIC_DIR)/img
+DIST_JS_DIR = $(PUBLIC_DIR)/js
+DIST_FONT_DIR = $(PUBLIC_DIR)/font
 
 JS_SRC_DIR = ./js
 LESS_SRC_DIR = ./less
 IMG_SRC_DIR = ./img
 FONT_SRC_DIR = ./font
+APP_SRC_DIR = ./app
 
 CHECK=\033[32m✔\033[39m
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
-build: build-js build-css build-font build-img 
-	@cp *.html $(DIST_DIR)
+dist: build-js build-css build-font build-img build-app
 
 
 # CLEANS THE ROOT DIRECTORY OF PRIOR BUILDS
 clean:
 	-rm -r $(DIST_DIR)
+
+# run the application
+run:
+	@ruby $(DIST_DIR)/app.rb
 
 # JS COMPILE
 build-js: $(JS_SRC_DIR)/*.js
@@ -58,4 +65,16 @@ build-font: $(FONT_SRC_DIR)/*
 	@echo "                                            ${CHECK} Done"
 	@echo "${HR}\n"
 
-.PHONY: build build-img build-css build-js build-font
+# FONT
+build-app: $(APP_SRC_DIR)/*
+	@echo "\n${HR}"
+	@echo "Building App..."
+	@mkdir -p $(DIST_VIEWS_DIR)
+	@cp -r $(APP_SRC_DIR)/views/* $(DIST_VIEWS_DIR)
+	@mkdir -p $(DIST_LIB_DIR)
+	@cp $(APP_SRC_DIR)/lib/*.rb $(DIST_LIB_DIR)
+	@cp $(APP_SRC_DIR)/*.rb $(DIST_DIR)
+	@echo "                                            ${CHECK} Done"
+	@echo "${HR}\n"
+
+.PHONY: dist build-img build-css build-js build-font
