@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<psc:chapters version="1.1" xmlns:psc="http://podlove.org/simple-chapters">
+<%entries.each do |entry|%>
+	<psc:chapter start="<%=entry.timecode_relative%>" title="<%=entry.text%>" />
+<%end%>
+</psc:chapters>

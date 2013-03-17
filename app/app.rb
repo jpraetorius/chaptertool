@@ -19,6 +19,12 @@ post '/shownotes' do
 	erb :shownotes, :locals => {:entries => entries}
 end
 
+post '/podlove' do
+	entries = get_entries(params)
+	content_type :xml
+	erb :podlove, :locals => {:entries => entries}
+end
+
 def get_entries(params)
 	entries = Hash.new
 	params.each do |param|
