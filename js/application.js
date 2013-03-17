@@ -37,11 +37,11 @@ $(document).ready(function() {
    });
 
    $("#text").click(function() {
-    //alert('Download as text');
+    
    });
 
    $("#xml").click(function() {
-    alert('Download as XML');
+    
    });
 
    $(document).on("click", "a.delete", function(){

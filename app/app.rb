@@ -7,7 +7,19 @@ get '/' do
 	erb :index
 end
 
-post '/as-text' do
+post '/auphonic' do
+	entries = get_entries(params)
+	content_type :text
+	erb :auphonic, :locals => {:entries => entries}
+end
+
+post '/shownotes' do
+	entries = get_entries(params)
+	content_type :text
+	erb :shownotes, :locals => {:entries => entries}
+end
+
+def get_entries(params)
 	entries = Hash.new
 	params.each do |param|
 		if (param[0].start_with? 'timecode_absolute_')
@@ -24,9 +36,7 @@ post '/as-text' do
 			entry.text = param[1].strip
 		end
 	end
-	sorted = entries.values.sort
-	content_type :text
-	erb :auphonic, :locals => {:entries => sorted}
+	entries.values.sort
 end
 
 def get_entry(entries, id)
