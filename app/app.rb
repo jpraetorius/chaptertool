@@ -25,6 +25,24 @@ post '/podlove' do
 	erb :podlove, :locals => {:entries => entries}
 end
 
+post '/convert' do
+	entries = get_entries(params)
+	format = params[:format]
+	case format
+	when 'auphonic' 
+		content_type :text
+		erb :auphonic, :locals => {:entries => entries}
+	when 'shownotes' 
+		content_type :text
+		erb :shownotes, :locals => {:entries => entries}
+	when 'podlove'
+		content_type :xml
+		disposition :attachment
+		response.set_cookie("fileDownload", :value => "true", :path => "/",)
+		erb :podlove, :locals => {:entries => entries}		
+	end
+end
+
 def get_entries(params)
 	entries = Hash.new
 	params.each do |param|

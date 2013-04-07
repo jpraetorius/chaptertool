@@ -36,12 +36,16 @@ $(document).ready(function() {
     location.reload();
    });
 
-   $("#text").click(function() {
-    
+   $("#auphonic").click(function() {
+      $('#dl-form').attr('action', '/auphonic');
    });
 
-   $("#xml").click(function() {
-    
+   $("#shownotes").click(function(e) {
+      $('#dl-form').attr('action', '/shownotes');
+   });
+
+   $("#podlove").click(function(e) {
+      $('#dl-form').attr('action', '/podlove');
    });
 
    $(document).on("click", "a.delete", function(){

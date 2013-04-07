@@ -47,11 +47,11 @@
               <button id="start" class="btn btn-success btn-large"><i class="icon-play-circle icon-large"> </i>Press me to start a new Session</button>
               <button id="stop" class="btn btn-danger btn-large hide"><i class="icon-stop icon-large"> </i>Stop Session</button>
           </div>
-          <form action="/podlove" method="post">
+          <form action="/convert" method="post" id="dl-form">
             <div id="dl-buttons" class="hide">
-              <button id="auphonic" class="btn btn-info btn-large"><i class="icon-cloud-download icon-large"> </i>Download for Auphonic</button>
-              <button id="shownotes" class="btn btn-info btn-large"><i class="icon-cloud-download icon-large"> </i>Download for shownotes</button>
-              <button id="podlove" class="btn btn-info btn-large"><i class="icon-cloud-download icon-large"> </i>Download as podlove XML</button>
+              <button id="auphonic" name="format" value="auphonic" class="btn btn-info btn-large"><i class="icon-cloud-download icon-large"> </i>Download for Auphonic</button>
+              <button id="shownotes" name="format" value="shownotes" class="btn btn-info btn-large"><i class="icon-cloud-download icon-large"> </i>Download for shownotes</button>
+              <button id="podlove" name="format" value="podlove" class="btn btn-info btn-large"><i class="icon-cloud-download icon-large"> </i>Download as podlove XML</button>
               <button id="reload" class="btn btn-success btn-large"><i class="icon-refresh icon-large"> </i>Start a new session</button>
             </div>
             <div id="timeline"> 
