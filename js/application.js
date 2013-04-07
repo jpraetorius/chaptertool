@@ -29,11 +29,13 @@ $(document).ready(function() {
     timeline_container.append('<h3>Tracking session stopped at ' + now.toString('dd.MM.yyyy HH:mm:ss') + '</h3>');
     $("#control-buttons").addClass('hide');
     $("#dl-buttons").removeClass('hide');
+    $("#reload-button").removeClass('hide');
     $("#help").addClass('help-show');
    });
 
    $("#reload").click(function() {
     location.reload();
+    e.preventDefault();
    });
 
    $("#auphonic").click(function() {
