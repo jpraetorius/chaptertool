@@ -1,5 +1,9 @@
 $LOAD_PATH << './lib'
 
+# add bundler for gem handling
+require 'bundler/setup'
+
+# all other dependencies
 require 'sinatra'
 require 'entry'
 
