@@ -45,7 +45,8 @@ $(document).ready(function() {
     var template = Handlebars.templates.auphonic;
     var context = { entries: entries };
     var formatted = template(context);
-    $('#result').html(formatted);
+    var blob = new Blob([formatted], {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "show_chapters_auphonic.txt");
   });
 
   $("#shownotes").click(function(e) {
@@ -54,7 +55,8 @@ $(document).ready(function() {
     var template = Handlebars.templates.shownotes;
     var context = { entries: entries };
     var formatted = template(context);
-    $('#result').html(formatted);
+    var blob = new Blob([formatted], {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "show_chapters_shownotes.txt");
   });
 
   $("#podlove").click(function(e) {
@@ -63,7 +65,8 @@ $(document).ready(function() {
     var template = Handlebars.templates.podlove;
     var context = { entries: entries };
     var formatted = template(context);
-    $('#result').html(formatted);
+    var blob = new Blob([formatted], {type: "text/xml;charset=utf-8"});
+    saveAs(blob, "show_chapters_podlove.xml");
   });
 
   $(document).on("click", "a.delete", function(){

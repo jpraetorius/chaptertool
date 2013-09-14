@@ -41,7 +41,7 @@ build-js: $(JS_SRC_DIR)/*.js
 	@echo "\n${HR}"
 	@echo "Building Javascript..."
 	@mkdir -p $(DIST_JS_DIR)
-	@cat $(JS_SRC_DIR)/jquery-1.9.1.js $(JS_SRC_DIR)/xdate.js $(JS_SRC_DIR)/handlebars.runtime-1.0.0.js $(JS_SRC_DIR)/templates.js $(JS_SRC_DIR)/application.js > $(DIST_JS_DIR)/app.js
+	@cat $(JS_SRC_DIR)/jquery-1.9.1.js $(JS_SRC_DIR)/xdate.js $(JS_SRC_DIR)/handlebars.runtime-1.0.12.js $(JS_SRC_DIR)/templates.js $(JS_SRC_DIR)/blob.js $(JS_SRC_DIR)/filesaver.js $(JS_SRC_DIR)/application.js > $(DIST_JS_DIR)/app.js
 	@uglifyjs -nc $(DIST_JS_DIR)/app.js > $(DIST_JS_DIR)/app.min.js
 	@rm $(DIST_JS_DIR)/app.js
 	@echo "                                            ${CHECK} Done"
