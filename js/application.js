@@ -78,20 +78,16 @@ function formatDateDiff(startdate, now) {
 }
 
 function addRow(diff, text, id) {
-
-  var template = '<div class="row-fluid">' +
-    '<div class="span3">' +
-      '<input type="text" class="input-block-level" placeholder="Timecode" name="timecode_'+ id +'" value="'+ diff +'" />' +
-      '<input type="hidden" name="timecode_absolute_'+ id +'" value="'+ id +'" />' +
-    '</div>' + 
-    '<div class="span8">' +
-      '<input type="text" class="input-block-level" placeholder="Please enter a description..." name="text_'+ id +'" value="' + text + '" />' +
-    '</div>' + 
-    '<div class="span1">' + 
-      '<a href="#" title="delete this entry" class="icon-remove icon-2x delete" id="'+ id +'"> </a>' + 
-    '</div>' + 
-  '</div>';
-
-  return template;
+  var template = Handlebars.templates.row;
+  var context = { id: id,
+                timecode_name: "timecode_", 
+                timecode_value: diff, 
+                timecode_absolute_name: "timecode_absolute_", 
+                timecode_absolute_value: id, 
+                text_name: "text_", 
+                text_value: text, 
+                remove_id: id};
+  var html = template(context);
+  return html;
 }
 
