@@ -36,7 +36,7 @@
       <div class="row-fluid">
         <div class="span12">
           <h1 class="page-header">Welcome to chaptertool</h1>
-          <p class="lead">Use this page to easily generate a chaptermark file for your podcast.<br />
+          <p class="lead" id="intro-text">Use this page to easily generate a chaptermark file for your podcast.<br />
             Simply press the button below to start a new session.</p>
         </div>
       </div>
@@ -47,7 +47,7 @@
               <button id="start" class="btn btn-success btn-large"><i class="icon-play-circle icon-large"> </i>Press me to start a new Session</button>
               <button id="stop" class="btn btn-danger btn-large hide"><i class="icon-stop icon-large"> </i>Stop Session</button>
           </div>
-          <form action="/convert" method="post" id="dl-form">
+          <form action="#" method="post" id="dl-form">
             <div id="dl-buttons" class="hide">
               <div class="row-fluid">
                 <div class="span3">
@@ -71,6 +71,12 @@
           <div class="row-fluid hide" id="reload-button">
             <div class="span9">
               <button id="reload" class="btn btn-success btn-large"><i class="icon-refresh icon-large"> </i>Start a new session</button>
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="span9">
+              <pre id="result">
+              </pre>
             </div>
           </div>
         </div>
