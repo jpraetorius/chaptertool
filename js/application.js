@@ -4,22 +4,22 @@ $(document).ready(function() {
   var timeline_container = $("#timeline");
   $("#start").click(function() {
    switch(state){
-    case "ready":
-    startdate = new XDate();
-    state = "running";
-    timeline_container.prepend(sessionStart(startdate));
-    timeline_container.append(addRow(formatDateDiff(startdate, startdate), 'Intro', startdate.getTime()));
-    $("#start").html("<i class='icon-bookmark-empty icon-large'> </i>Add new Timestamp...");
-    $("#stop").removeClass('hide');
-    break;
-    case "running":
-    var now = new XDate();
-    timeline_container.append(addRow(formatDateDiff(startdate, now), '', now.getTime()));
-    break;
-    case "finished":
-    break;
-  }
-});
+      case "ready":
+        startdate = new XDate();
+        state = "running";
+        timeline_container.prepend(sessionStart(startdate));
+        timeline_container.append(addRow(formatDateDiff(startdate, startdate), 'Intro', startdate.getTime()));
+        $("#start").html("<i class='icon-bookmark-empty icon-large'> </i>Add new Timestamp...");
+        $("#stop").removeClass('hide');
+        break;
+      case "running":
+        var now = new XDate();
+        timeline_container.append(addRow(formatDateDiff(startdate, now), '', now.getTime()));
+        break;
+      case "finished":
+        break;
+    }
+  });
 
   $("#stop").click(function() {
     var now = new XDate();
@@ -81,7 +81,7 @@ function serializeForm() {
   var source = $("#dl-form").serializeArray();
   var entries = new Array();
   var entry = {};
-  source.forEach( function(src) { 
+  source.forEach(function(src) { 
     var name = src.name;
     var value = src.value;
     if (name.indexOf("timecode_absolute_") >= 0) {
@@ -134,29 +134,35 @@ function formatDateDiff(startdate, now) {
 
 function addRow(diff, text, id) {
   var template = Handlebars.templates.row;
-  var context = { id: id,
+  var context = { 
+    id: id,
     timecode_name: "timecode_relative_", 
     timecode_value: diff, 
     timecode_absolute_name: "timecode_absolute_", 
     timecode_absolute_value: id, 
     text_name: "text_", 
     text_value: text, 
-    remove_id: id};
+    remove_id: id
+  };
     var html = template(context);
     return html;
-  }
+}
 
-  function sessionStart(date) {
-    var template = Handlebars.templates.tracking_session_start;
-    var context = { session_start: date.toString('dd.MM.yyyy HH:mm:ss') };
-    var html = template(context);
-    return html;
-  }
+function sessionStart(date) {
+  var template = Handlebars.templates.tracking_session_start;
+  var context = { 
+    session_start: date.toString('dd.MM.yyyy HH:mm:ss') 
+  };
+  var html = template(context);
+  return html;
+}
 
-  function sessionEnd(date) {
-    var template = Handlebars.templates.tracking_session_end;
-    var context = { session_end: date.toString('dd.MM.yyyy HH:mm:ss') };
-    var html = template(context);
-    return html;
-  }
+function sessionEnd(date) {
+  var template = Handlebars.templates.tracking_session_end;
+  var context = { 
+    session_end: date.toString('dd.MM.yyyy HH:mm:ss') 
+  };
+  var html = template(context);
+  return html;
+}
 
