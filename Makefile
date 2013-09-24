@@ -1,12 +1,10 @@
 DIST_DIR = ./dist
-PUBLIC_DIR = $(DIST_DIR)/public
-DIST_VIEWS_DIR = $(DIST_DIR)/views
-DIST_LIB_DIR = $(DIST_DIR)/lib
-DIST_CSS_DIR = $(PUBLIC_DIR)/css
-DIST_IMG_DIR = $(PUBLIC_DIR)/img
-DIST_JS_DIR = $(PUBLIC_DIR)/js
-DIST_FONT_DIR = $(PUBLIC_DIR)/font
+DIST_CSS_DIR = $(DIST_DIR)/css
+DIST_IMG_DIR = $(DIST_DIR)/img
+DIST_JS_DIR = $(DIST_DIR)/js
+DIST_FONT_DIR = $(DIST_DIR)/font
 
+HTML_SRC_DIR = ./html
 JS_SRC_DIR = ./js
 LESS_SRC_DIR = ./less
 IMG_SRC_DIR = ./img
@@ -17,18 +15,19 @@ HANBLEBARS_TEMPLATES_SRC_DIR=./handlebars-templates
 CHECK=\033[32m✔\033[39m
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
-dist: build-handlebars build-js build-css build-font build-img build-app
+dist: build-handlebars build-js build-css build-font build-img build-html
 
 
-# CLEANS THE ROOT DIRECTORY OF PRIOR BUILDS
+# Remove all build artifacts
 clean:
-	-rm -r $(DIST_DIR)
+	@rm -r $(DIST_DIR)
 
-# run the application
+# 'Run' the application (starts a simple HTTP Server for Test purposes)
 run:
-	@ruby $(DIST_DIR)/app.rb
+	@cd $(DIST_DIR)
+	@python -m SimpleHTTPServer
 
-# handlebars compile (needs to be before JS Compile)
+# handlebars compile (needs to be before JS Compile, as the artifacts are then inlined in the combined minified application.js)
 build-handlebars:
 	@echo "\n${HR}"
 	@echo "Precompiling Handlebars templates..."
@@ -74,16 +73,12 @@ build-font: $(FONT_SRC_DIR)/*
 	@echo "                                            ${CHECK} Done"
 	@echo "${HR}\n"
 
-# FONT
-build-app: $(APP_SRC_DIR)/*
+# HTML Resources
+build-html: $(HTML_SRC_DIR)/*
 	@echo "\n${HR}"
-	@echo "Building App..."
-	@mkdir -p $(DIST_VIEWS_DIR)
-	@cp -r $(APP_SRC_DIR)/views/* $(DIST_VIEWS_DIR)
-	@mkdir -p $(DIST_LIB_DIR)
-	@cp $(APP_SRC_DIR)/lib/*.rb $(DIST_LIB_DIR)
-	@cp $(APP_SRC_DIR)/*.rb $(DIST_DIR)
+	@echo "Building HTML..."
+	@cp -r $(HTML_SRC_DIR)/* $(DIST_DIR)
 	@echo "                                            ${CHECK} Done"
 	@echo "${HR}\n"
 
-.PHONY: dist build-img build-css build-js build-font
+.PHONY: dist build-img build-css build-js build-font build-html
