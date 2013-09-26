@@ -1,20 +1,26 @@
 chaptertool
 ===========
 
-Simple Sinatra and JQuery Application to generate chapterfiles in podlove, auphonic and shownotes format
+Simple HTML Singlepage/Javascript Application to generate chapterfiles in podlove, auphonic and shownotes format
 
-This simple app is thought as helper for people who want chapterfiles in their podcasts. 
-The main part is recording events while recording, which is done with some simple Javascript, so no
-network roundtrips or other latencies occur – simply click a button, when a new Chapter starts.
+This simple app is thought as helper for people who want chapterfiles in their podcasts without to much hassle in setting up tooling to produce those. 
+It is built as a simple HTML Page to record Events in your show. Whenever something noticeable happens (i.e. a new Chapter starts) – simply press the button on the page and get  new Entry with the timecode.
+All Event-Entries are created locally, so you have no additional roundtrip times over the Network.
 
-In a second step Fill in some details for your chapters (a short title) and then decide, which format you want.
+When you're done with recording Chapters, fill in some details (e.g. a short title) and then decide, which format you want.
 Currently supported are:
 
  * [Auphonic Chaptermarks](https://auphonic.com/api-docs/simple_api.html#adding-chapter-marks)
  * [Podlove Simple Chapters](http://podlove.org/simple-chapters/)
  * [Open Shownotes Format](https://github.com/shownotes/OpenShownotesFormat)
 
-On selection the file is generated and sent back as simple text (or XML), for you to save locally. 
+On selection the file is generated and sent back as simple text (or XML), for you to save locally. You can save the same listing in different formats, if you want or need to.
 
-Currently that is a one step process, which means you have to hit `back` to go back to the form and will start with a
-fresh page then, so multiple formats are currently not possible.
+The Chaptertool is based on these fine Libraries:
+
+ * [JQuery](https://jquery.com/)
+ * [Handlebars](http://handlebarsjs.com/)
+ * [FileSaver.js](https://github.com/eligrey/FileSaver.js/)
+ * [Bootstrap](http://getboostrap.com)
+ * [XDate](http://arshaw.com/xdate/)
+
